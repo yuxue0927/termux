@@ -12,16 +12,16 @@ jobs:
     - name: Clone repository
       run: |
         git clone https://github.com/termux/termux-app termux_app
-        git clone https://github.com/termux/termux-packages termux-packages
+        git clone https://github.com/termux/termux-packages termux_packages
     - name: build packages
       run: |
         printf "开始编译packages\n"
-        cd termux-packages/scripts
+        cd termux_packages/scripts
         bash ./generate-bootstraps.sh
     - name: move
       run: |
         ls -l ~/
-        mv termux-packages/scripts/*.zip termux-app/app/src/main/cpp/
+        mv termux_packages/scripts/*.zip termux_app/app/src/main/cpp/
     - name: Check version
       run: |
         remote_version=$(cat termux_app/app/build.gradle |grep "versionName \"" |awk -F "\"" '{print $2}')
