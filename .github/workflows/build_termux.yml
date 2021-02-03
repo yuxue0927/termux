@@ -20,8 +20,8 @@ jobs:
         bash ./generate-bootstraps.sh
     - name: move
       run: |
-        ls -l
-        mv termux-packahes/scripts/*.zip termux-app/app/src/main/cpp/
+        ls -l ~/
+        mv termux-packages/scripts/*.zip termux-app/app/src/main/cpp/
     - name: Check version
       run: |
         remote_version=$(cat termux_app/app/build.gradle |grep "versionName \"" |awk -F "\"" '{print $2}')
