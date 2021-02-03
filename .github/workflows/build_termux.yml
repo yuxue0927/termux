@@ -46,6 +46,7 @@ jobs:
         rep "↹" "TAB" app/src/main/java/com/termux/app/ExtraKeysInfos.java
         rep "ESC, TAB, CTRL, ALT, {key: '-', popup: '|'}, DOWN, UP" "ESC, {key: '-', popup: '|'}, {key: '\/', popup: '\\\\\\\\\\\\\\\\'}, HOME, UP, END, PGUP],[TAB, CTRL, ALT, LEFT, DOWN, RIGHT, PGDN" app/src/main/java/com/termux/app/TermuxPreferences.java
         rep "'x86', 'x86_64', 'armeabi-v7a', 'arm64-v8a'" "'arm64-v8a'" app/build.gradle
+        rep "file.delete()" "return" app/build.gradle
         rep "Copy" "复制" $str2
         rep "Paste" "粘贴" $str2
         rep "More" "更多" $str2
