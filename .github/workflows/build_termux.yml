@@ -10,7 +10,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Clone repository
-      run: git clone https://github.com/termux/termux-app termux_app
+      run: |
+        git clone https://github.com/termux/termux-app termux_app
+        git clone https://github.com/termux/termux-packages termux_packages
+        printf "开始编译packages\n"
+        cd termux_packages/scripts
+        bash ./generate-bootstraps.sh
+        mv *.zip ../../termux-app/app/src/main/cpp/
     - name: Check version
       run: |
         remote_version=$(cat termux_app/app/build.gradle |grep "versionName \"" |awk -F "\"" '{print $2}')
