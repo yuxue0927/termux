@@ -103,12 +103,7 @@ jobs:
           sed -i "s/.*app.*/\"app\":\"${remote_version}\",/g" README.md
           git config --global user.email "237586390@qq.com"
           git config --global user.name "voii"
-          git add version.json
-          git add README.md
-          git commit -m "update"
-          git push
     - name: Store generated APK file
-      if: env.zt == 0
       uses: actions/upload-artifact@v1
       with:
         name: termux-arm64
