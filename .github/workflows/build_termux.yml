@@ -20,7 +20,7 @@ jobs:
         bash ./generate-bootstraps.sh
     - name: move
       run: |
-        ls -l ~/
+        ls -l
         mv termux_packages/scripts/*.zip termux_app/app/src/main/cpp/
     - name: Check version
       run: |
@@ -112,4 +112,4 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: termux-arm64
-        path: ./termux_app/app/build/outputs/apk/debug/app-debug.apk
+        path: ./termux_app/app/build/outputs/apk/debug/*.apk
