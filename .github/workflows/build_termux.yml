@@ -37,16 +37,15 @@ jobs:
     - name: Replace
       run: |
         ###
+        tran(){
         cd termux_app
         rep(){ sed -i "s/$1/$2/g" $3 ;}
         str="app/src/main/res/values-zh-rCN/strings.xml"
-        str2="terminal-view/src/main/res/values-zh-rCN/strings.xml"
+        #str2="terminal-view/src/main/res/values-zh-rCN/strings.xml"
         cp -r app/src/main/res/values app/src/main/res/values-zh-rCN
-        cp -r terminal-view/src/main/res/values terminal-view/src/main/res/values-zh-rCN
-        rep "↹" "TAB" app/src/main/java/com/termux/app/ExtraKeysInfos.java
-        rep "ESC, TAB, CTRL, ALT, {key: '-', popup: '|'}, DOWN, UP" "ESC, {key: '-', popup: '|'}, {key: '\/', popup: '\\\\\\\\\\\\\\\\'}, HOME, UP, END, PGUP],[TAB, CTRL, ALT, LEFT, DOWN, RIGHT, PGDN" app/src/main/java/com/termux/app/TermuxPreferences.java
-        rep "'x86', 'x86_64', 'armeabi-v7a', 'arm64-v8a'" "'arm64-v8a'" app/build.gradle
-        rep "file.delete()" "return" app/build.gradle
+        #cp -r terminal-view/src/main/res/values terminal-view/src/main/res/values-zh-rCN
+        rep "↹" "TAB" app/src/main/java/com/termux/app/terminal/io/extrakeys/ExtraKeysInfo.java
+        rep "ESC, TAB, CTRL, ALT, {key: '-', popup: '|'}, DOWN, UP" "ESC, {key: '-', popup: '|'}, {key: '\/', popup: '\\\\\\\\\\\\\\\\'}, HOME, UP, END, PGUP],[TAB, CTRL, ALT, LEFT, DOWN, RIGHT, PGDN" termux-shared/src/main/java/com/termux/shared/settings/properties/TermuxPropertyConstants.java
         rep "Copy" "复制" $str2
         rep "Paste" "粘贴" $str2
         rep "More" "更多" $str2
@@ -81,6 +80,7 @@ jobs:
         rep "Create" "创建" $str
         rep "New named session" "新命名的会话" $str
         rep "Set session name" "设置会话名" $str
+        rep "Settings" "设置" $str
         rep "Set" "设置" $str
         rep "Send text to:" "发送文本至:" $str
         rep "Terminal transcript" "终端日志" $str
@@ -89,8 +89,27 @@ jobs:
         rep "The Termux:Style add-on is not installed." "Termux:Style插件没有安装." $str
         rep "Style" "风格" $str
         rep "Keep screen on" "保持屏幕常亮" $str
+        rep "Report Issue" "报告问题" $str
         rep "Keyboard" "键盘" $str
+        rep "Soft keyboard will be disabled." "禁用软键盘" $str
+        rep "Soft keyboard will be enabled. (Default)" "启用软键盘.(默认)" $str
+        rep "Debugging" "调试" $str
+        rep "Logging" "日志" $str
+        rep "Plugin Error Notifications" "插件错误通知" $str
+        rep "Disable flashes and notifications for plugin errors." "禁用插件错误的闪烁和通知." $str
+        rep "Show flashes and notifications for plugin errors. (Default)" "显示插件错误的闪烁和通知.(默认)" $str
+        rep "Crash Report Notifications" "崩溃报告通知" $str
+        rep "Disable notifications for crash reports." "禁用崩溃报告的通知" $str
+        rep "Show notifications for crash reports. (Default)" "显示崩溃报告的通知.(默认)" $str
+        rep "The following file does not exist" "以下文件不存在" app/src/main/java/com/termux/filepicker/TermuxFileReceiverActivity.java
+        rep "Create this file as a script or a symlink - it will be called with the received file as only argument" "把使用的编辑器命令链接到此文件" app/src/main/java/com/termux/filepicker/TermuxFileReceiverActivity.java
+        rep " session\" + (sessionCount == 1 ? \"\" : \"s\")" "个会话\" + (sessionCount == 1 ? \"\" : \"\")" app/src/main/java/com/termux/app/TermuxService.java
+        rep "Process completed" "进程已结束" terminal-emulator/src/main/java/com/termux/terminal/TerminalSession.java
+        rep "press Enter" "按回车关闭" terminal-emulator/src/main/java/com/termux/terminal/TerminalSession.java
+        rep "'x86', 'x86_64', 'armeabi-v7a', 'arm64-v8a'" "'arm64-v8a'" app/build.gradle
         printf "修改完成----\n"
+        }
+        tran
     - name: Build apk
       run: |
         printf "开始编译\n"
